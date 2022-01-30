@@ -1,12 +1,10 @@
 import type { NextPage } from "next";
-import HeaderBar from "components/HeaderBar";
+import SignIn from "components/SignIn";
 
-const Home: NextPage = () => {
-  return (
-    <div className="max-w-6xl mx-auto my-0">
-      <HeaderBar name="Sahil" />
-    </div>
-  );
-};
+const SignInPage: NextPage = () => (
+  <div className="h-full">
+    <SignIn />
+  </div>
+);
 
-export default Home;
+export default SignInPage;

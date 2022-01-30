@@ -8,6 +8,7 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { Popover, Transition } from "@headlessui/react";
 import { Fragment } from "react";
+import Link from "next/link";
 interface HeaderBarProps {
   name: string;
 }
@@ -16,14 +17,14 @@ const resources = [
   {
     name: "My Profile",
     description: "View/Edit your profile information.",
-    href: "#",
+    route: "/profile",
     icon: UserIcon,
   },
   {
     name: "Create Cover Letters",
     description:
       "Build a cover letter using the available templates on the go.",
-    href: "#",
+    route: "/build",
     icon: BeakerIcon,
   },
 ];
@@ -41,18 +42,17 @@ const Logo = () => (
 
 const Menu = () => (
   <Popover.Group as="nav" className="hidden md:flex space-x-10">
-    <a
-      href="#"
-      className="text-base font-medium text-gray-500 hover:text-gray-900"
-    >
-      Dashboard
-    </a>
-    <a
-      href="#"
-      className="text-base font-medium text-gray-500 hover:text-gray-900"
-    >
-      Docs
-    </a>
+    <Link href="/dashboard">
+      <a className="text-base font-medium text-gray-500 hover:text-gray-900">
+        Dashboard
+      </a>
+    </Link>
+
+    <Link href="/docs">
+      <a className="text-base font-medium text-gray-500 hover:text-gray-900">
+        Docs
+      </a>
+    </Link>
 
     <Popover className="relative">
       {({ open }) => (
@@ -86,24 +86,22 @@ const Menu = () => (
               <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                 <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                   {resources.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                    >
-                      <item.icon
-                        className="flex-shrink-0 h-6 w-6 text-indigo-600"
-                        aria-hidden="true"
-                      />
-                      <div className="ml-4">
-                        <p className="text-base font-medium text-gray-900">
-                          {item.name}
-                        </p>
-                        <p className="mt-1 text-sm text-gray-500">
-                          {item.description}
-                        </p>
-                      </div>
-                    </a>
+                    <Link href={item.route} key={item.name}>
+                      <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
+                        <item.icon
+                          className="flex-shrink-0 h-6 w-6 text-indigo-600"
+                          aria-hidden="true"
+                        />
+                        <div className="ml-4">
+                          <p className="text-base font-medium text-gray-900">
+                            {item.name}
+                          </p>
+                          <p className="mt-1 text-sm text-gray-500">
+                            {item.description}
+                          </p>
+                        </div>
+                      </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -158,27 +156,23 @@ const ResponsiveMenu = ({ name }: HeaderBarProps) => (
         </div>
         <div className="py-6 px-5 space-y-6">
           <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-            <a
-              href="#"
-              className="text-base font-medium text-gray-900 hover:text-gray-700"
-            >
-              Dashboard
-            </a>
-
-            <a
-              href="#"
-              className="text-base font-medium text-gray-900 hover:text-gray-700"
-            >
-              Docs
-            </a>
-            {resources.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-base font-medium text-gray-900 hover:text-gray-700"
-              >
-                {item.name}
+            <Link href="/dashboard">
+              <a className="text-base font-medium text-gray-900 hover:text-gray-700">
+                Dashboard
               </a>
+            </Link>
+            <Link href="/docs">
+              <a className="text-base font-medium text-gray-900 hover:text-gray-700">
+                Docs
+              </a>
+            </Link>
+
+            {resources.map((item) => (
+              <Link key={item.name} href={item.route}>
+                <a className="text-base font-medium text-gray-900 hover:text-gray-700">
+                  {item.name}
+                </a>
+              </Link>
             ))}
           </div>
           <div>
