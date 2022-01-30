@@ -1,10 +1,11 @@
-import type { NextPage } from "next";
-import Layout from "components/Layout";
+import type { NextPage } from 'next';
+import Layout from 'components/Layout';
+import Upload from 'components/Upload';
 
 const DocsPage: NextPage = () => (
-  <Layout>
-    <div>[placeholder for Docs]</div>
-  </Layout>
+	<Layout>
+		<Upload />
+	</Layout>
 );
 
 export default DocsPage;

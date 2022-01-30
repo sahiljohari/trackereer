@@ -1,15 +1,15 @@
-import { ReactNode } from "react";
-import HeaderBar from "components/HeaderBar";
+import { ReactNode } from 'react';
+import HeaderBar from 'components/HeaderBar';
 
 interface LayoutProps {
-  children: ReactNode;
+	children: ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => (
-  <div className="max-w-7xl mx-auto my-0">
-    <HeaderBar name="Sahil" />
-    {children}
-  </div>
+	<div className="max-w-7xl mx-auto my-0">
+		<HeaderBar name="Sahil" />
+		{children}
+	</div>
 );
 
 export default Layout;
